@@ -23,10 +23,14 @@ const server = new GraphQLServer({
     User,
     Comment,
   },
-  context: {
-    db,
-    pubsub,
-    prisma
+  context(req) {
+
+    return {
+      db,
+      pubsub,
+      prisma,
+      req
+    }
   },
 })
 
